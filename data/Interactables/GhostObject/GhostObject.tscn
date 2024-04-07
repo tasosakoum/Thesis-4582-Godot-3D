@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://dythclqr507rx"]
+
+[ext_resource type="Script" path="res://data/Interactables/GhostObject/Scripts/GhostObject.gd" id="1_nfere"]
+[ext_resource type="Script" path="res://data/Interactables/GhostObject/Scripts/MovableGhostItem.gd" id="2_ybniu"]
+[ext_resource type="Script" path="res://data/Interactables/GhostObject/Scripts/GhostPlaceableObject.gd" id="3_nyg5c"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ptt7d"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_m3c8y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7tuiw"]
+transparency = 1
+blend_mode = 3
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_31iuo"]
+material = SubResource("StandardMaterial3D_7tuiw")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4d60w"]
+
+[node name="GhostObject" type="Node3D"]
+script = ExtResource("1_nfere")
+
+[node name="MovableItem" type="RigidBody3D" parent="."]
+script = ExtResource("2_ybniu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MovableItem"]
+shape = SubResource("CapsuleShape3D_ptt7d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MovableItem"]
+mesh = SubResource("CapsuleMesh_m3c8y")
+
+[node name="GhostItem" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00558, 0, 0)
+script = ExtResource("3_nyg5c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GhostItem"]
+mesh = SubResource("CapsuleMesh_31iuo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GhostItem"]
+shape = SubResource("CapsuleShape3D_4d60w")

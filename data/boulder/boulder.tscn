@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://ckb0q2b2anwvu"]
+
+[ext_resource type="Script" path="res://data/boulder/boulder.gd" id="1_cg0vq"]
+[ext_resource type="Texture2D" uid="uid://c8c0orrg5fr7r" path="res://data/boulder/textures/plastered_stone_wall_diff_4k.jpg" id="2_5br3q"]
+[ext_resource type="Texture2D" uid="uid://gvtl2jsku82o" path="res://data/boulder/textures/plastered_stone_wall_disp_4k.png" id="2_cpwuj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i7yr2"]
+rough = true
+bounce = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4sf6"]
+albedo_texture = ExtResource("2_cpwuj")
+roughness_texture = ExtResource("2_cpwuj")
+roughness_texture_channel = 4
+anisotropy = -1.0
+ao_enabled = true
+ao_light_affect = 1.0
+ao_texture = ExtResource("2_cpwuj")
+ao_on_uv2 = true
+subsurf_scatter_strength = 0.22
+subsurf_scatter_skin_mode = true
+refraction_scale = 1.0
+detail_enabled = true
+detail_mask = ExtResource("2_5br3q")
+detail_blend_mode = 3
+detail_uv_layer = 1
+detail_albedo = ExtResource("2_cpwuj")
+
+[sub_resource type="SphereMesh" id="SphereMesh_5p0wb"]
+resource_local_to_scene = true
+lightmap_size_hint = Vector2i(347, 178)
+material = SubResource("StandardMaterial3D_b4sf6")
+add_uv2 = true
+radius = 11.0
+height = 22.428
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_p2x1c"]
+radius = 11.0
+
+[node name="RigidBody3D" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_i7yr2")
+contact_monitor = true
+script = ExtResource("1_cg0vq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.42521, 27.5851)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_5p0wb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.42521, 27.5851)
+shape = SubResource("SphereShape3D_p2x1c")

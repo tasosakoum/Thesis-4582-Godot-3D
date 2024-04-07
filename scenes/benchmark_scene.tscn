@@ -1,0 +1,67 @@
+[gd_scene load_steps=12 format=3 uid="uid://br20ga0ehoauy"]
+
+[ext_resource type="Script" path="res://data/scripts/world.gd" id="1_hjvjg"]
+[ext_resource type="Texture2D" uid="uid://bfmbndv1sge56" path="res://data/sky.exr" id="2_lh7at"]
+[ext_resource type="Texture2D" uid="uid://gvtl2jsku82o" path="res://data/boulder/textures/plastered_stone_wall_disp_4k.png" id="3_70mya"]
+[ext_resource type="PackedScene" uid="uid://cwiu8nsyij4gn" path="res://data/player/player.tscn" id="3_iwb6y"]
+[ext_resource type="PackedScene" uid="uid://ckb0q2b2anwvu" path="res://data/boulder/boulder.tscn" id="5_p5d55"]
+[ext_resource type="PackedScene" uid="uid://cl7f3uobi70f6" path="res://data/BarrelSpawner/BarrelSpawner.tscn" id="6_7hdu0"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qkuvf"]
+panorama = ExtResource("2_lh7at")
+
+[sub_resource type="Sky" id="Sky_5kae4"]
+sky_material = SubResource("PanoramaSkyMaterial_qkuvf")
+
+[sub_resource type="Environment" id="Environment_45e05"]
+background_mode = 2
+sky = SubResource("Sky_5kae4")
+ssao_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5o34"]
+shading_mode = 2
+albedo_texture = ExtResource("3_70mya")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6dk7p"]
+rough = true
+
+[node name="BenchmarkScene" type="Node3D"]
+script = ExtResource("1_hjvjg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866024, 0.433016, -0.25, -0.117674, 0.662463, 0.739794, 0.485959, -0.611261, 0.624663, -5.16923, 123.979, 22.5719)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_45e05")
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(-21.886, -5.44669e-08, 1.21592e-06, 0, 1.13671, 7.62321, -1.91333e-06, 0.623029, -13.9085, -4.09755, 29.4899, 42.3073)
+use_collision = true
+size = Vector3(1, 1, 8)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(-76.0838, 0, 4.91141e-06, 0, 1, 0, -6.65146e-06, 0, -56.18, -10.5214, -0.987557, 127.673)
+material_override = SubResource("StandardMaterial3D_f5o34")
+gi_mode = 2
+gi_lightmap_scale = 1
+use_collision = true
+size = Vector3(1, 1, 1.06067)
+
+[node name="RigidBodies" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.205559, 0)
+
+[node name="RigidBody3D" parent="RigidBodies" instance=ExtResource("5_p5d55")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.62017, 65.5902, 22.0434)
+mass = 500.0
+physics_material_override = SubResource("PhysicsMaterial_6dk7p")
+
+[node name="player" parent="." instance=ExtResource("3_iwb6y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.8903, 0.514542, 120.432)
+
+[node name="BarrelSpawner" parent="." instance=ExtResource("6_7hdu0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.57302, 41.3336, 119.602)

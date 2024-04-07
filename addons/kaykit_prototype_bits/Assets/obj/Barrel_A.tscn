@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxgnn2qav3xj6"]
+
+[ext_resource type="ArrayMesh" uid="uid://cdjy17p15ahso" path="res://addons/kaykit_prototype_bits/Assets/obj/Barrel_A.obj" id="1_mmh1u"]
+[ext_resource type="Script" path="res://data/Interactables/MovableObject/MovableObject.gd" id="2_xnqh3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dfh44"]
+
+[node name="BarrelA" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+max_contacts_reported = 1000
+contact_monitor = true
+script = ExtResource("2_xnqh3")
+
+[node name="BarrelA" type="MeshInstance3D" parent="RigidBody3D"]
+cast_shadow = 0
+mesh = ExtResource("1_mmh1u")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_dfh44")

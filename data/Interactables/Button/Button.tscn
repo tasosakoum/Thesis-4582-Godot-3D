@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=3 uid="uid://dm5565mo1mrnr"]
+
+[ext_resource type="Script" path="res://data/Interactables/Button/Button.gd" id="2_b0rfp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_24swu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ddfsa"]
+albedo_color = Color(1, 0.0627451, 0.184314, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dst4i"]
+material = SubResource("StandardMaterial3D_ddfsa")
+size = Vector3(1, 1, 0.5)
+
+[sub_resource type="Skin" id="Skin_po6xn"]
+
+[sub_resource type="Animation" id="Animation_hwr3e"]
+resource_name = "Button_Press"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 0.5), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.0696082), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:mesh:material:albedo_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.352941, 0.627451, 0, 1), Color(1, 0.0627451, 0.184314, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7bvit"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.0696082)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D:mesh:material:albedo_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.0627451, 0.184314, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aac02"]
+_data = {
+"Button_Press": SubResource("Animation_hwr3e"),
+"RESET": SubResource("Animation_7bvit")
+}
+
+[node name="Button" type="RigidBody3D"]
+freeze = true
+script = ExtResource("2_b0rfp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+shape = SubResource("BoxShape3D_24swu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.299954, -0.00527237, 0, 0.00527237, 0.299954, 0, 0, 0.0696082)
+mesh = SubResource("BoxMesh_dst4i")
+skin = SubResource("Skin_po6xn")
+skeleton = NodePath("")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_aac02")
+}
