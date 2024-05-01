@@ -1,6 +1,7 @@
 extends Node3D
 
 
+var interface: XRInterface
 var paused = false
 
 signal pause
@@ -8,6 +9,10 @@ signal unpause
 
 
 func _ready():
+	interface = XRServer.find_interface("OpenXR")
+	if interface and interface.is_initialized():
+		get_viewport().user_xr = true
+		
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func pause_game():

@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://gqydq2n7l3i6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vh4bt"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3brid"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="XrPlayer" type="Node3D"]
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.211098, -0.00214052, -0.46545)
+
+[node name="RightController" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+
+[node name="Right Hand Mesh" type="MeshInstance3D" parent="XROrigin3D/RightController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+mesh = SubResource("BoxMesh_vh4bt")
+skeleton = NodePath("../../LeftController")
+
+[node name="LeftController" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="Left Hand Mesh" type="MeshInstance3D" parent="XROrigin3D/LeftController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+mesh = SubResource("BoxMesh_3brid")
+
+[node name="XRCamera3D" type="Camera3D" parent="XROrigin3D"]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 0, 0, 0)
