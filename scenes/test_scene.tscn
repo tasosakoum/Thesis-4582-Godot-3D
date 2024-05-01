@@ -1,15 +1,15 @@
 [gd_scene load_steps=18 format=3 uid="uid://ilgtopf4qqit"]
 
 [ext_resource type="Script" path="res://data/scripts/world.gd" id="1_1nl11"]
-[ext_resource type="Texture2D" uid="uid://cknnpbe7gnutf" path="res://data/prototype/Green/texture_01.png" id="2_dasfe"]
-[ext_resource type="Texture2D" uid="uid://cjmy06h4u2c4r" path="res://data/prototype/Orange/texture_01.png" id="3_rtmuh"]
-[ext_resource type="Texture2D" uid="uid://bfmbndv1sge56" path="res://data/sky.exr" id="3_xhwpm"]
+[ext_resource type="Texture2D" uid="uid://d2do5hggwc75r" path="res://data/prototype/Green/texture_01.png" id="2_dasfe"]
+[ext_resource type="Texture2D" uid="uid://bp38738ys08tt" path="res://data/prototype/Orange/texture_01.png" id="3_rtmuh"]
+[ext_resource type="Texture2D" uid="uid://bisbesbhedvsx" path="res://data/sky.exr" id="3_xhwpm"]
 [ext_resource type="PackedScene" uid="uid://dm5565mo1mrnr" path="res://data/Interactables/Button/Button.tscn" id="7_km5u8"]
 [ext_resource type="PackedScene" uid="uid://cdkonoybsy5w2" path="res://data/Interactables/MovableObject/MovableObject.tscn" id="7_v25sy"]
 [ext_resource type="PackedScene" uid="uid://4u1138el0tw3" path="res://data/Interactables/Door/Door.tscn" id="8_tb7gr"]
 [ext_resource type="PackedScene" uid="uid://b485rq1b1kyx8" path="res://data/Interactables/PressurePlate/PressurePlate.tscn" id="9_g5xu0"]
 [ext_resource type="PackedScene" uid="uid://dythclqr507rx" path="res://data/Interactables/GhostObject/GhostObject.tscn" id="10_yyol4"]
-[ext_resource type="PackedScene" uid="uid://ctltchlf2j2r4" path="res://addons/xr-simulator/XRSimulator.tscn" id="11_8m8kr"]
+[ext_resource type="PackedScene" uid="uid://gqydq2n7l3i6" path="res://data/player/XRPlayer.tscn" id="11_hfw3n"]
 [ext_resource type="PackedScene" uid="uid://dxgnn2qav3xj6" path="res://addons/kaykit_prototype_bits/Assets/obj/Barrel_A.tscn" id="11_y3l1f"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6bxyf"]
@@ -131,12 +131,16 @@ OnPressurePlateReleased = Array[int]([7])
 [node name="GhostObject" parent="Ghost Objects" instance=ExtResource("10_yyol4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3386, 3.28396, -2.95328)
 
-[node name="GhostItem" parent="Ghost Objects/GhostObject" index="1"]
+[node name="GhostItem" parent="Ghost Objects/GhostObject" index="0"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.00558, 0, 2.50721)
+
+[node name="PickableObject" parent="Ghost Objects/GhostObject" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2.24522)
 
 [node name="BarrelA" parent="." instance=ExtResource("11_y3l1f")]
 transform = Transform3D(1, -1.04308e-07, 0, 0, 0.999999, 0, 1.04308e-07, 0, 1, -29.2961, 5.45957, -0.0996737)
 
-[node name="XRSimulator" parent="." instance=ExtResource("11_8m8kr")]
+[node name="XrPlayer" parent="." instance=ExtResource("11_hfw3n")]
+transform = Transform3D(-0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866026, -32, 7, 0)
 
 [editable path="Ghost Objects/GhostObject"]

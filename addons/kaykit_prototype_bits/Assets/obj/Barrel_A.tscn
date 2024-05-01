@@ -1,21 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxgnn2qav3xj6"]
+[gd_scene load_steps=6 format=3 uid="uid://dxgnn2qav3xj6"]
 
-[ext_resource type="ArrayMesh" uid="uid://cdjy17p15ahso" path="res://addons/kaykit_prototype_bits/Assets/obj/Barrel_A.obj" id="1_mmh1u"]
-[ext_resource type="Script" path="res://data/Interactables/MovableObject/MovableObject.gd" id="2_xnqh3"]
+[ext_resource type="ArrayMesh" uid="uid://dhr2aot8xpqop" path="res://addons/kaykit_prototype_bits/Assets/obj/Barrel_A.obj" id="1_mmh1u"]
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_qqhmj"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_be21i"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_5p1lj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dfh44"]
 
 [node name="BarrelA" type="Node3D"]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-max_contacts_reported = 1000
-contact_monitor = true
-script = ExtResource("2_xnqh3")
+[node name="PickableObject" parent="." instance=ExtResource("1_qqhmj")]
 
-[node name="BarrelA" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="BarrelA" type="MeshInstance3D" parent="PickableObject"]
 cast_shadow = 0
 mesh = ExtResource("1_mmh1u")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="PickableObject"]
 shape = SubResource("BoxShape3D_dfh44")
+
+[node name="GrabPointHandLeft" parent="PickableObject" instance=ExtResource("3_be21i")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.474519, 0.144519, -0.220944)
+visible = true
+editor_preview_mode = 1
+
+[node name="GrabPointHandRight" parent="PickableObject/GrabPointHandLeft" instance=ExtResource("4_5p1lj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3133, 0, 0.0048492)
+visible = true
+editor_preview_mode = 1

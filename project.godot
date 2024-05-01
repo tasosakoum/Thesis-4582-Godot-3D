@@ -20,10 +20,11 @@ config/icon="res://icon.svg"
 Enums="*res://data/Enums/Enums.gd"
 Signals="*res://data/Enums/Signals.gd"
 XrSimulator="*res://addons/xr-simulator/XRSimulator.tscn"
+XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_vim/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg", "res://addons/godot_vim/plugin.cfg", "res://addons/script_bench/plugin.cfg")
 
 [input]
 
