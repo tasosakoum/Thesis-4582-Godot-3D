@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dm5565mo1mrnr"]
+[gd_scene load_steps=10 format=3 uid="uid://dm5565mo1mrnr"]
 
 [ext_resource type="Script" path="res://data/Interactables/Button/Button.gd" id="2_b0rfp"]
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="2_phj5p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_24swu"]
 
@@ -19,7 +20,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:mesh:size")
+tracks/0/path = NodePath("PickableObject/MeshInstance3D:mesh:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -31,7 +32,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D:position")
+tracks/1/path = NodePath("PickableObject/MeshInstance3D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -43,7 +44,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("MeshInstance3D:mesh:material:albedo_color")
+tracks/2/path = NodePath("PickableObject/MeshInstance3D:mesh:material:albedo_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -58,7 +59,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:mesh:size")
+tracks/0/path = NodePath("PickableObject/MeshInstance3D:mesh:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -70,7 +71,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D:position")
+tracks/1/path = NodePath("PickableObject/MeshInstance3D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -82,7 +83,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("MeshInstance3D:mesh:material:albedo_color")
+tracks/2/path = NodePath("PickableObject/MeshInstance3D:mesh:material:albedo_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -98,21 +99,26 @@ _data = {
 "RESET": SubResource("Animation_7bvit")
 }
 
-[node name="Button" type="RigidBody3D"]
-freeze = true
+[node name="Button" type="Node3D"]
 script = ExtResource("2_b0rfp")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="PickableObject" parent="." instance=ExtResource("2_phj5p")]
+collision_layer = 5
+freeze = true
+freeze_mode = 0
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="PickableObject"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 shape = SubResource("BoxShape3D_24swu")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PickableObject"]
 transform = Transform3D(0.3, 0, 0, 0, 0.299954, -0.00527237, 0, 0.00527237, 0.299954, 0, 0, 0.0696082)
 mesh = SubResource("BoxMesh_dst4i")
 skin = SubResource("Skin_po6xn")
 skeleton = NodePath("")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PickableObject"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_aac02")
 }

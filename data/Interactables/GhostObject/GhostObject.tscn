@@ -34,6 +34,7 @@ mesh = SubResource("CapsuleMesh_31iuo")
 shape = SubResource("CapsuleShape3D_4d60w")
 
 [node name="PickableObject" parent="." instance=ExtResource("3_8b34p")]
+collision_layer = 5
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="PickableObject"]
 shape = SubResource("CapsuleShape3D_ptt7d")

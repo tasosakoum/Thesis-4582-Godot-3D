@@ -10,6 +10,7 @@
 [node name="BarrelA" type="Node3D"]
 
 [node name="PickableObject" parent="." instance=ExtResource("1_qqhmj")]
+collision_layer = 5
 
 [node name="BarrelA" type="MeshInstance3D" parent="PickableObject"]
 cast_shadow = 0
