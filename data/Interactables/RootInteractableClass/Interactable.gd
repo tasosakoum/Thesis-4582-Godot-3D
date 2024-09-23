@@ -14,6 +14,7 @@ func interact():
 	
 func moveIfPossible(position):
 	if (isMovable):	
+		isMoving = true
 		global_transform.origin = position
 		
 func setIsMoving(isMoving: bool):

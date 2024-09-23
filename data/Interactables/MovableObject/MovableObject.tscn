@@ -1,30 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdkonoybsy5w2"]
+[gd_scene load_steps=4 format=3 uid="uid://cdkonoybsy5w2"]
 
 [ext_resource type="PackedScene" uid="uid://ckuijvmfsts6u" path="res://data/Interactables/RootInteractableClass/Interactable.tscn" id="1_4funt"]
 [ext_resource type="Script" path="res://data/Interactables/MovableObject/MovableObject.gd" id="2_aomx5"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kfmwt"]
-albedo_color = Color(0, 1, 0.933333, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_efvua"]
-material = SubResource("StandardMaterial3D_kfmwt")
 
-[node name="MovableObject" type="Node3D"]
+[node name="MovableObject" instance=ExtResource("1_4funt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00037241, -0.031317, 0.0192919)
+disable_mode = 1
+continuous_cd = true
+script = ExtResource("2_aomx5")
 
-[node name="PickableObject" parent="." instance=ExtResource("1_kftsv")]
-collision_layer = 5
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PickableObject"]
-mesh = SubResource("BoxMesh_t32dt")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="PickableObject"]
-transform = Transform3D(1.01031, 0, 0, 0, 1.01031, 0, 0, 0, 1.01031, 0, 0.0111613, 0.011855)
-shape = SubResource("BoxShape3D_7h53a")
-
-[node name="GrabPointHandRight" parent="PickableObject" instance=ExtResource("2_fm3vp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.498666, 0.408886, 0.378451)
-visible = true
-
-[node name="GrabPointHandLeft" parent="PickableObject" instance=ExtResource("3_ts4fw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488889, 0.408886, 0.39529)
-visible = true
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("BoxMesh_efvua")

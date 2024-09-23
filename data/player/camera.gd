@@ -13,6 +13,8 @@ func _input(event):
 	if event.is_action_released("Shoot"):
 		stoppedInteracting.emit()
 		await stoppedInteracting
+		if detectedObject is Interactable:
+			detectedObject.isMoving = false
 		detectedObject = null
 		
 func _process(delta): 

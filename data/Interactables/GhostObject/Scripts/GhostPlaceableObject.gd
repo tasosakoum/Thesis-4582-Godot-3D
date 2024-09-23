@@ -1,16 +1,10 @@
 extends Area3D
 
-var rootNode: Node3D
-var movableItem: XRToolsPickable
-var objectId: int
-
-func _ready():
-	rootNode = $".."
-	objectId = rootNode.objectId
-	movableItem = $"../PickableObject"
+@onready var rootNode: Node3D = $".."
+@onready var movableItem: Interactable = $"../MovableItem"
+@onready var objectId: int = rootNode.objectId
 
 func _process(delta):
-	if overlaps_body(movableItem):
+	if overlaps_body(movableItem) and not movableItem.isMoving:
 		movableItem.transform = transform
-		movableItem.FREEZE_MODE_KINEMATIC
 
