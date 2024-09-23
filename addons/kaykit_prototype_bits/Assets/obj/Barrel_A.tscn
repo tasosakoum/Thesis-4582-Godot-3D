@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dxgnn2qav3xj6"]
 
-[ext_resource type="ArrayMesh" uid="uid://dhr2aot8xpqop" path="res://addons/kaykit_prototype_bits/Assets/obj/Barrel_A.obj" id="1_mmh1u"]
+[ext_resource type="ArrayMesh" uid="uid://cdjy17p15ahso" path="res://addons/kaykit_prototype_bits/Assets/obj/Barrel_A.obj" id="1_mmh1u"]
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_qqhmj"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_be21i"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_5p1lj"]

@@ -20,13 +20,13 @@ tracker = &"right_hand"
 [node name="RightHand" parent="XROrigin3D/RightController" instance=ExtResource("1_vfx1b")]
 
 [node name="FunctionPickup" parent="XROrigin3D/RightController" instance=ExtResource("2_qxsek")]
+grab_distance = 1.0
 
 [node name="MovementTurn" parent="XROrigin3D/RightController" instance=ExtResource("3_px7rr")]
 
 [node name="FunctionPointer" parent="XROrigin3D/RightController" instance=ExtResource("4_8nv2c")]
-show_laser = 2
-laser_length = 1
 show_target = true
+collision_mask = 5242881
 
 [node name="LeftController" type="XRController3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
@@ -38,6 +38,7 @@ tracker = &"left_hand"
 strafe = true
 
 [node name="FunctionPickup" parent="XROrigin3D/LeftController" instance=ExtResource("2_qxsek")]
+grab_distance = 1.0
 
 [node name="PlayerBody" parent="XROrigin3D/LeftController" instance=ExtResource("6_j5gls")]
 
