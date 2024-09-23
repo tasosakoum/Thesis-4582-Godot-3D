@@ -134,10 +134,16 @@ OnPressurePlateReleased = Array[int]([7])
 [node name="GhostObject" parent="Ghost Objects" instance=ExtResource("10_yyol4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3386, 3.28396, -2.95328)
 
+[node name="MeshInstance3D" parent="Ghost Objects/GhostObject/MovableItem" index="1"]
+gi_mode = 2
+
 [node name="GhostItem" parent="Ghost Objects/GhostObject" index="1"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.00558, 0, 2.50721)
 
 [node name="BarrelA" parent="." instance=ExtResource("11_y3l1f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2961, 3.45957, -2.81635)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23, 25, 73.5735)
 
 [editable path="Ghost Objects/GhostObject"]
