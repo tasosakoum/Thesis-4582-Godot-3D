@@ -2,13 +2,12 @@ extends Interactable
 
 @export var affectedObjectIds: Array[int]
 @export var state: Array[Enums.ObjectInteractBehavior]
-
-var animationPlayer: AnimationPlayer
+@onready var animationPlayer: AnimationPlayer = $RigidBody3D/AnimationPlayer
 
 func _ready():
 	isMovable = false
-	animationPlayer = $AnimationPlayer
 	
 func interact(): 
 	Signals.buttonPressed.emit(affectedObjectIds, state)
 	animationPlayer.play("Button_Press")
+	

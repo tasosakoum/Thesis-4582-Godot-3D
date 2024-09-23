@@ -1,7 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://7tvtamj61g5j"]
 
 [ext_resource type="Script" path="res://data/scripts/world.gd" id="1_lbbfc"]
-[ext_resource type="PackedScene" uid="uid://cwiu8nsyij4gn" path="res://data/player/player.tscn" id="1_mi6mk"]
 [ext_resource type="Texture2D" uid="uid://bfmbndv1sge56" path="res://data/sky.exr" id="2_sqwdj"]
 [ext_resource type="Texture2D" uid="uid://ha386d7lpksj" path="res://scenes/plastered_stone_wall_disp_4k.png" id="4_b2h5w"]
 [ext_resource type="PackedScene" uid="uid://4u1138el0tw3" path="res://data/Interactables/Door/Door.tscn" id="4_bqi2f"]
@@ -10,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cdkonoybsy5w2" path="res://data/Interactables/MovableObject/MovableObject.tscn" id="7_6vcgr"]
 [ext_resource type="PackedScene" uid="uid://dythclqr507rx" path="res://data/Interactables/GhostObject/GhostObject.tscn" id="8_8qa3q"]
 [ext_resource type="PackedScene" uid="uid://ba1ryf0iip1hl" path="res://data/Managers/LevelFinish.tscn" id="9_b5vaa"]
+[ext_resource type="PackedScene" uid="uid://gqydq2n7l3i6" path="res://data/player/XRPlayer.tscn" id="10_xhn2a"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qkuvf"]
 panorama = ExtResource("2_sqwdj")
@@ -48,10 +48,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_45e05")
-
-[node name="player" parent="." instance=ExtResource("1_mi6mk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.22653, 2, 10.7762)
-crouch_enabled = false
 
 [node name="Geometry" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.16923, 0, 2.36794)
@@ -305,11 +301,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.335, 1.73711, -15.3387)
 [node name="GhostObject" parent="Ghost Objects" instance=ExtResource("8_8qa3q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1.54061, -32)
 
-[node name="MovableItem" parent="Ghost Objects/GhostObject" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.572285, 0, -0.505852)
-shouldResetAfterDrop = true
-
-[node name="GhostItem" parent="Ghost Objects/GhostObject" index="1"]
+[node name="GhostItem" parent="Ghost Objects/GhostObject" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.7239, 0, -2.11537)
 
 [node name="MovableObject" parent="." instance=ExtResource("7_6vcgr")]
@@ -333,6 +325,9 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
+
+[node name="XrPlayer" parent="." instance=ExtResource("10_xhn2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 11)
 
 [editable path="Ghost Objects/GhostObject"]
 [editable path="LevelFinish"]

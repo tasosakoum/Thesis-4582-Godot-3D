@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://duvshgwvpw1xk"]
+
+[ext_resource type="PackedScene" uid="uid://gqydq2n7l3i6" path="res://data/player/XRPlayer.tscn" id="1_2xo1a"]
+[ext_resource type="Script" path="res://data/scripts/world.gd" id="1_qmivd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2pvrm"]
+
+[node name="TestVr" type="Node3D"]
+script = ExtResource("1_qmivd")
+
+[node name="XrPlayer" parent="." instance=ExtResource("1_2xo1a")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+mesh = SubResource("BoxMesh_2pvrm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, -6)
+mesh = SubResource("BoxMesh_2pvrm")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -4, -2)
+mesh = SubResource("BoxMesh_2pvrm")

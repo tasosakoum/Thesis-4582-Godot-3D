@@ -9,11 +9,22 @@ albedo_color = Color(0, 1, 0.933333, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_efvua"]
 material = SubResource("StandardMaterial3D_kfmwt")
 
-[node name="MovableObject" instance=ExtResource("1_4funt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00037241, -0.031317, 0.0192919)
-disable_mode = 1
-continuous_cd = true
-script = ExtResource("2_aomx5")
+[node name="MovableObject" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
-mesh = SubResource("BoxMesh_efvua")
+[node name="PickableObject" parent="." instance=ExtResource("1_kftsv")]
+collision_layer = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PickableObject"]
+mesh = SubResource("BoxMesh_t32dt")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="PickableObject"]
+transform = Transform3D(1.01031, 0, 0, 0, 1.01031, 0, 0, 0, 1.01031, 0, 0.0111613, 0.011855)
+shape = SubResource("BoxShape3D_7h53a")
+
+[node name="GrabPointHandRight" parent="PickableObject" instance=ExtResource("2_fm3vp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.498666, 0.408886, 0.378451)
+visible = true
+
+[node name="GrabPointHandLeft" parent="PickableObject" instance=ExtResource("3_ts4fw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.488889, 0.408886, 0.39529)
+visible = true
