@@ -1,8 +1,8 @@
 extends Interactable
 
-@export var affectedObjectIds: Array[int]
-@export var state: Array[Enums.ObjectInteractBehavior]
-@onready var animationPlayer: AnimationPlayer = $RigidBody3D/AnimationPlayer
+@onready var affectedObjectIds = $"..".affectedObjectIds
+@onready var state = $"..".state
+@onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 
 func _ready():
 	isMovable = false

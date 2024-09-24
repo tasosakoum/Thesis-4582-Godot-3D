@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dm5565mo1mrnr"]
 
+[ext_resource type="Script" path="res://data/Interactables/Button/ObjectHolder.gd" id="1_t4lqc"]
 [ext_resource type="Script" path="res://data/Interactables/Button/Button.gd" id="2_b0rfp"]
-[ext_resource type="Script" path="res://data/Interactables/Button/Button_rigidbody.gd" id="2_m44w6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_24swu"]
 
@@ -100,11 +100,11 @@ _data = {
 }
 
 [node name="Button" type="Node3D"]
-script = ExtResource("2_b0rfp")
+script = ExtResource("1_t4lqc")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 freeze = true
-script = ExtResource("2_m44w6")
+script = ExtResource("2_b0rfp")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
